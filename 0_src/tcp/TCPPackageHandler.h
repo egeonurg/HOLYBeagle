@@ -13,6 +13,13 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 
+
+#ifdef CROSS_COMPILE_BBBI
+#define TCP_INTERFACE_NAME_ACTIVE "eth0"
+#else
+#define TCP_INTERFACE_NAME_ACTIVE "enp1s0"
+#endif
+
 class TCPPackageHandler 
 {
 private:

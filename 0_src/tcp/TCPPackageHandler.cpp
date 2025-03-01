@@ -51,7 +51,7 @@ void TCPPackageHandler::sendPacket(const char *srcIP, const char *destIP, const 
     unsigned char dest_mac[ETH_ALEN] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
     unsigned char src_mac[ETH_ALEN] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     unsigned short eth_type = htons(ETH_P_IP);
-    get_mac_address("enp1s0", src_mac);
+    get_mac_address(TCP_INTERFACE_NAME_ACTIVE, src_mac);
     memcpy(buffer, dest_mac, ETH_ALEN);
     memcpy(buffer + ETH_ALEN, src_mac, ETH_ALEN);
     memcpy(buffer + 2 * ETH_ALEN, &eth_type, sizeof(eth_type));
