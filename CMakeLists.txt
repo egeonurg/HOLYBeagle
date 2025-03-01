@@ -2,14 +2,16 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name and version
-project(send_tcp VERSION 1.0 LANGUAGES C)
+project(tcp_app VERSION 1.0 LANGUAGES C CXX)
 
-# Set C standard and enable warnings
+# Set C and C++ standards
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 17)
+
+# Enable warnings
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
-# Add the executable
-add_executable(send_tcp main.c)
-
-# Install the executable (optional)
-install(TARGETS send_tcp DESTINATION bin)
+# Add the executable (Ensure .cpp files are used)
+add_executable(tcp_app 0_src/main.cpp 0_src/tcp/TCPPackageHandler.cpp)
+target_include_directories(tcp_app PRIVATE ${CMAKE_SOURCE_DIR}/0_src/tcp)
