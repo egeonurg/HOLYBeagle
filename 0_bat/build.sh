@@ -5,7 +5,7 @@ cd ..
 ls 
 
 cd 5_cross
-./ 
+
 mkdir build
 
 cd build
