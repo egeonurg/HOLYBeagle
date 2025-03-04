@@ -22,10 +22,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mcpu=cortex-a8 -mfpu=neon -mfloat-abi=hard")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcpu=cortex-a8 -mfpu=neon -mfloat-abi=hard")
 
-add_definitions(-DCROSS_COMPILE_BBBI)
+add_definitions(-DTCP_CROSS_COMPILE)
 
 # Add the executable (Ensure .cpp files are used)
-add_executable(tcp_app ../1_src/main.cpp ../1_src/tcp/TCPPackageHandler.cpp)
+add_executable(tcp_app ../1_src/main.cpp)
 target_link_libraries(tcp_app pthread)
 target_include_directories(tcp_app PRIVATE ${CMAKE_SOURCE_DIR} ../1_src/tcp)
 

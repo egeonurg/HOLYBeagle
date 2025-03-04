@@ -62,7 +62,10 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "ethernet.h": "c"
+        "ethernet.h": "c",
+        "socket.h": "c",
+        "condition_variable": "cpp",
+        "mutex": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
