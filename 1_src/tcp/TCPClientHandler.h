@@ -9,7 +9,7 @@
 #include <mutex>
 #include <condition_variable>
 
-class Client {
+class TCPClientHandler {
 private:
     int clientSocket;
     std::mutex mtx;
@@ -19,7 +19,7 @@ private:
     void sendData();
 
 public:
-    Client();
+    TCPClientHandler();
     void start();
 };
 

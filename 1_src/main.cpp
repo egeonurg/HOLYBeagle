@@ -4,7 +4,7 @@
 int main() 
 {
 #ifdef TCP_CROSS_COMPILE
-    Client client;
+    TCPClientHandler client;
     client.start();
     return 0;
 #else

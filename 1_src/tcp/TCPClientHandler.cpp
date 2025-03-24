@@ -2,9 +2,9 @@
 
 #include "TCPClientHandler.h"
 
-Client::Client() : clientSocket(-1), running(true) {}
+TCPClientHandler::TCPClientHandler() : clientSocket(-1), running(true) {}
 
-void Client::receiveData() {
+void TCPClientHandler::receiveData() {
     char buffer[1024];
     while (running) {
         int bytesReceived = recv(clientSocket, buffer, sizeof(buffer), 0);
@@ -20,7 +20,7 @@ void Client::receiveData() {
     }
 }
 
-void Client::sendData() {
+void TCPClientHandler::sendData() {
     int messageCount = 0;
     while (running) {
         std::string message = "Queen of the castle is laying next to me, but she looks a bit pissed off. Are you pissed of Darina, tell me :) " + std::to_string(messageCount++);
@@ -39,7 +39,7 @@ void Client::sendData() {
     }
 }
 
-void Client::start() {
+void TCPClientHandler::start() {
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == -1) {
         std::cerr << "Failed to create socket!" << std::endl;
@@ -59,8 +59,8 @@ void Client::start() {
 
     std::cout << "Connected to server!" << std::endl;
 
-    std::thread receiverThread(&Client::receiveData, this);
-    std::thread senderThread(&Client::sendData, this);
+    std::thread receiverThread(&TCPClientHandler::receiveData, this);
+    std::thread senderThread(&TCPClientHandler::sendData, this);
 
     receiverThread.join();
     senderThread.join();
